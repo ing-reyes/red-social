@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  social_pg:
+    image: postgres:15.1
+    container_name: social_pg
+    restart: always
+    environment:
+      POSTGRES_DB: socialdb
+      POSTGRES_USER: usocial
+      POSTGRES_PASSWORD: secret123456
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
